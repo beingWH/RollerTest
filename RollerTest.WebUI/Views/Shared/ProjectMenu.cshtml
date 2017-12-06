@@ -1,0 +1,33 @@
+﻿@model RollerTest.WebUI.Models.ProjectListViewModel
+<div class="ibox float-e-margins">
+    <div class="ibox-content mailbox-content">
+        <div class="file-manager">
+            <a class="btn btn-block btn-primary compose-mail" href="~/Project/CreateProject">创建项目</a>
+            <div class="space-25"></div>
+            <h5>项目列表</h5>
+            <table class="table-striped">
+                <thead>
+                </thead>
+                <tbody>
+                    @foreach (var p in Model.rollerprojectinfos)
+                    {
+                        <tr>
+                            <td width="90%">@Html.ActionLink(@p.TestName, "ViewInfo", new { Controller = "Sample", Action = "ViewInfo", RollerProjectInfoID = p.RollerProjectInfoID })</td>
+                            @*<td width="10%">@Html.ActionLink("编辑", "EditProject", new {Controller="Project", p.RollerProjectInfoID }, new { @class = "btn btn-white btn-sm"})</td>*@
+                            <td width="10%">
+                                @using (Html.BeginForm("DeleteProject", "Project"))
+                                {
+                                    @Html.Hidden("RollerProjectInfoID", p.RollerProjectInfoID)
+                                    <button class="btn btn-white btn-sm" type="submit">删除</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+

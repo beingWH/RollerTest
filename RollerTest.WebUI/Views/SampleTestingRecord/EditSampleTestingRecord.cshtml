@@ -1,0 +1,46 @@
+﻿@model RollerTest.Domain.Entities.RollerRecordInfo
+
+@{
+    ViewBag.Title = "EditSampleTestingRecord";
+}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row col-sm-6">
+        <form method="post" class="form-horizontal" action="~/SampleTestingRecord/EditSampleTestingRecord">
+            @Html.HiddenFor(x => x.RollerRecordInfoID)
+            @Html.HiddenFor(x => x.RollerSampleInfoID)
+            @Html.HiddenFor(x => x.CurrentTime)
+            @Html.HiddenFor(x => x.TotalTime)
+            <div class="hr-line-dashed"></div>
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">样品编号</label>
+                <label class="col-sm-2 control-label">@Model.RollerSampleInfo.SampleID</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">样品状态</label>
+                <div class="col-sm-2 radio-primary media-middle">
+                    @Html.RadioButtonFor(x => x.SampleStatus, true, new { @id = "radio1", @name = "rdolstState" })正常
+                </div>
+                <div class="col-sm-2 radio-primary aligncenter">
+                    @Html.RadioButtonFor(x => x.SampleStatus, false, new { @id = "radio2", @name = "rdolstState" })异常
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">样品信息</label>
+                <div class="col-sm-8">@Html.EditorFor(x => x.RecordInfo)</div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group col-sm-12">
+                <div class="col-sm-2 col-lg-offset-2">@Html.ValidationMessageFor(x => x.RecordInfo)</div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="col-sm-offset-3">
+                <input class="btn btn-primary" type="submit" value="提交" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

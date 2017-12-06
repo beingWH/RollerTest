@@ -1,0 +1,165 @@
+﻿@model RollerTest.WebUI.Models.SampleViewModel
+
+@{
+    ViewBag.Title = "ViewInfo";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-3">
+            @{ Html.RenderPartial("ProjectMenu",Model.projectlistviewmodel);}
+        </div>
+        <div class="col-sm-9 animated fadeInRight">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>项目信息 <small>确保项目信息完整后开始试验</small></h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">基本信息</label>
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <ul>
+                                                <li>
+                                                    产品相关
+                                                    <ul>
+                                                        <li>产品分类： @Model.rollerprojectinfo.Product_CateGory</li>
+                                                        <li>产品名称： @Model.rollerprojectinfo.Product_Name</li>
+                                                        <li>产品图号： @Model.rollerprojectinfo.Product_NO</li>
+                                                        <li>群品番号： @Model.rollerprojectinfo.Product_GL_Code</li>
+                                                        <li>产品型号： @Model.rollerprojectinfo.Product_Type_NO</li>
+                                                        <li>制造单位： @Model.rollerprojectinfo.Product_Company</li>
+                                                        <li>单位地址： @Model.rollerprojectinfo.Company_Address</li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>试验相关
+                                                    <ul>
+                                                        <li>试验平台： @Model.rollerprojectinfo.Platform</li>
+                                                        <li>试验类型： @Model.rollerprojectinfo.Type</li>
+                                                        <li>试验名称： @Model.rollerprojectinfo.TestName</li>
+                                                        <li>试验ID号： @Model.rollerprojectinfo.TestID</li>
+                                                        <li>试验目的： @Model.rollerprojectinfo.Test_Purpose</li>
+                                                        <li>试验要求： @Model.rollerprojectinfo.Test_Requirement</li>
+                                                    </ul>
+                                                 </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="row">
+                                            <ul>
+                                                <li>
+                                                    委托相关
+                                                    <ul>
+                                                        <li>委托单号： @Model.rollerprojectinfo.Commission</li>
+                                                        <li>委托ID号： @Model.rollerprojectinfo.CommissionID</li>
+                                                        <li>委托人： @Model.rollerprojectinfo.WTPersonName</li>
+                                                        <li>委托部门： @Model.rollerprojectinfo.WTPersonDept</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    标准相关
+                                                    <ul>
+                                                        <li>相关模板： @Model.rollerprojectinfo.ReqStandard</li>
+                                                        <li>试验标准： @Model.rollerprojectinfo.TestStandard</li>
+                                                        <li>标准选项： @Model.rollerprojectinfo.Standard_Option</li>
+                                                        <li>特殊要求： @Model.rollerprojectinfo.Standard_Remark</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    其他内容
+                                                    <ul>
+                                                        <li>试验人员ID： @Model.rollerprojectinfo.TestPersonID</li>
+                                                        <li>校对人员ID： @Model.rollerprojectinfo.CheckPersonID</li>
+                                                        <li>审批日期： @Model.rollerprojectinfo.Approve_Time</li>
+                                                        <li>约定完成日期： @Model.rollerprojectinfo.Re_Finish_Date</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                    <label class="col-sm-1 control-label">基本信息</label>
+
+                                    <div class="col-sm-11">
+                                        <div class="row">
+                                            <div class="col-sm-4"><input type="text" class="form-control" id="Commission" value="委托单号：@Model.rollerprojectinfo.Commission" readonly></div>
+                                            <div class="col-sm-4"><input type="text" class="form-control" id="TestName" value="试验名称：@Model.rollerprojectinfo.TestName" readonly></div>
+                                            <div class="col-sm-4"><input type="text" class="form-control" id="TestStandard" value="试验标准：@Model.rollerprojectinfo.TestStandard" readonly></div>
+                                        </div>
+                                        <div>&nbsp;</div>
+                                        <div class="row">
+
+                                        </div>
+                                        <div>&nbsp;</div>
+                                        <div class="row">
+                                            <div class="col-sm-4"><input type="text" class="form-control" id="TestPerson" value="试验人员：@Model.rollerprojectinfo.TestPersonID" readonly></div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">样品信息</label>
+                                    <div class="container col-sm-11">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td align="center">样品编号</td>
+                                                    <td align="center">样品名称</td>
+                                                    <td align="center">工位</td>
+                                                    <td align="center">试验类型</td>
+                                                    <td align="center">试验时间</td>
+                                                    <td align="center">上限值</td>
+                                                    <td align="center">下限值</td>
+                                                    <td align="center">标定值</td>
+                                                    <td align="center">操作</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach(var p in Model.rollersampleinfos)
+                                                {
+                                                    <tr>
+                                                        <td  align="center" width="15%">@p.SampleID</td>
+                                                        <td  align="center" width="15%">@p.SampleName</td>
+                                                        <td  align="center" width="5%">@p.RollerBaseStation.Station</td>
+                                                        <td  align="center" width="14%">@p.TestType</td>
+                                                        <td  align="center" width="8%">@p.TestTime</td>
+                                                        <td  align="center" width="7%">@p.UpLimit</td>
+                                                        <td  align="center" width="7%">@p.DnLimit</td>
+                                                        <td  align="center" width="7%">@p.SetValue</td>
+                                                        <td  align="center" width="12%">
+                                                            @Html.ActionLink("编辑", "EditSample", new { p.RollerSampleInfoID,p.RollerProjectInfoID })|@Html.ActionLink("删除", "Delete", new { RollerSampleInfoID = p.RollerSampleInfoID })                                                     
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-1">
+                                        @Html.ActionLink("增加样品", "CreateSample", new { Controller = "Sample", RollerProjectInfoID = Model.rollerprojectinfo.RollerProjectInfoID })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+

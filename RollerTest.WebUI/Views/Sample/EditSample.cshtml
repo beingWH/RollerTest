@@ -1,0 +1,140 @@
+﻿@model RollerTest.Domain.Entities.RollerSampleInfo
+
+@{
+    ViewBag.Title = "EditSample";
+}
+
+<h2>编辑试验内容</h2>
+
+<div>
+    @Html.ActionLink("返回列表", "ViewInfo", new { RollerProjectInfoID = Model.RollerProjectInfoID })
+    <hr />
+    <div class="container col-sm-6 row">
+        <form method="post" class="form-horizontal" action="~/Sample/EditSample">
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(x => x.RollerSampleInfoID)
+            @Html.HiddenFor(x => x.RollerProjectInfoID)
+            @Html.HiddenFor(x => x.State)
+            @Html.HiddenFor(x=>x.TestID)
+            @Html.HiddenFor(x => x.TestTotalTime)
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">样品编号</label>
+                <div class="col-sm-10">
+                    @Html.DropDownListFor(x => x.SampleID, ViewData["SampleIDList"] as IEnumerable<SelectListItem>, "请选择", htmlAttributes: new { @class = "form-control", @id = "SampleID" })
+                    @Html.ValidationMessageFor(x => x.SampleID)
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">样品名称</label>
+
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.SampleName, new { @id = "SampleName", @class = "form-control", @readonly = "true" })
+                    @Html.ValidationMessageFor(x => x.SampleName)
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">设备</label>
+                <div class="col-sm-4">
+                    @Html.DropDownList("Device", ViewData["DeviceList"] as IEnumerable<SelectListItem>, "请选择", htmlAttributes: new { @class = "form-control", @id = "Device" })
+                </div>
+                <label class="col-sm-2 control-label">工位</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(x => x.RollerBaseStationID, ViewData["StationList"] as IEnumerable<SelectListItem>, "请选择", htmlAttributes: new { @class = "form-control" })
+                    <div id="RollerBaseStationID"></div>
+                    @Html.ValidationMessageFor(x => x.RollerBaseStationID)
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">试验类型</label>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(x => x.TestType, ViewData["TestTypeList"] as IEnumerable<SelectListItem>, "请选择", htmlAttributes: new { @id = "TestType", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.TestType)
+                </div>
+                <label class="col-sm-2 control-label">试验时间</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(x => x.TestTime, new { @id = "TestTime", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.TestTime)
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">上限值</label>
+                <div class="col-sm-10">
+                    @Html.EditorFor(x => x.UpLimit)
+                @Html.ValidationMessageFor(x => x.UpLimit)
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">下限值</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(x => x.DnLimit)
+            @Html.ValidationMessageFor(x => x.DnLimit)
+        </div>
+    </div>
+    <div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">设定值</label>
+        <div class="col-sm-10">
+            @Html.EditorFor(x => x.SetValue)
+            @Html.ValidationMessageFor(x => x.SetValue)
+        </div>
+    </div>
+    <div class="hr-line-dashed"></div>
+    <div class="col-sm-offset-2">
+        <input class="btn btn-primary" type="submit" value="提交" />
+    </div>
+</form>
+</div>
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $('select#TestType').change(function () {
+                if ($('#TestType').val() == "寿命试验") {
+                    $('#TestTime').val(0);
+                    $('#TestTime').attr("readonly", true);
+                } else {
+                    $('#TestTime').val(0);
+                    $('#TestTime').attr("readonly", false);
+                }
+            });
+            $("#SetValue").change(function () {
+                $("#UpLimit").val(parseInt($("#SetValue").val()) + 200);
+                $("#DnLimit").val(parseInt($("#SetValue").val()) - 200);
+            });
+            $('select#SampleID').change(function () {
+                $.getJSON("/Sample/SampleName", { SampleID: $('#SampleID').val() }, function (data, status) {
+                    if (status == 'success') {
+                        $("#SampleName").val(data);
+                        $("#SampleName").attr("readonly", true);
+                    }
+                });
+
+            });
+
+            $('select#Device').change(function () {
+
+                $.getJSON("/Sample/StationList", { device: $('#Device').val() }, function (data, status) {
+                    if (status == 'success') {
+                        // 清空选项框，很重要
+                        $("select[name='RollerBaseStationID']").empty();
+                        var jsonObj = eval(data);
+                        $.each(jsonObj, function (i, item) {
+                            $("<option value='" + item.Value + "'>" + item.Text + "</option>").appendTo($("select[name='RollerBaseStationID']"))
+                        });
+                    } else { alert("警告:请求错误！") }
+                })
+            });
+        })
+    </script>
+}
+
+
+
+

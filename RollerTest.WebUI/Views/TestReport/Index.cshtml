@@ -1,0 +1,37 @@
+﻿@model RollerTest.Domain.Entities.RollerTestreportInfo
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row col-sm-6">
+        <form method="post" class="form-horizontal" action="~/TestReport/EditTestReport">
+            @Html.HiddenFor(x => x.RollerTestReportInfoID)
+            @Html.HiddenFor(x => x.RollerSampleInfoID)
+            @Html.HiddenFor(x => x.EndStatus)
+            @Html.HiddenFor(x => x.EndText)
+            @Html.HiddenFor(x => x.FinalStatus)
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">试验前性能</label>
+                <div class="col-sm-2 radio-primary media-middle">
+                    @Html.RadioButtonFor(x => x.StartStatus, true, new { @id = "radio1", @name = "rdolstState" })正常
+                </div>
+                <div class="col-sm-2 radio-primary aligncenter">
+                    @Html.RadioButtonFor(x => x.StartStatus, false, new { @id = "radio2", @name = "rdolstState" })异常
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">样品信息</label>
+                <div class="col-sm-8">@Html.EditorFor(x => x.StartText)</div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="col-sm-offset-3">
+                <input class="btn btn-primary" type="submit" value="提交" />
+            </div>
+        </form>
+    </div> 
+</div>
+

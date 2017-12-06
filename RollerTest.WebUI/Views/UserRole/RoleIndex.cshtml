@@ -1,0 +1,48 @@
+﻿@model RollerTest.WebUI.Models.RoleViewModel
+
+@{
+    ViewBag.Title = "RoleIndex";
+    int i = 1;
+}
+
+<h2>角色管理</h2>
+<div class="container col-lg-8">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td align="center">序号</td>
+                <td align="center">编号</td>
+                <td align="center">角色名</td>
+                <td align="center">操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Roles)
+            {
+                <tr>
+                    <td width="5%">@i</td>
+                    <td width="30%">@p.Id</td>
+                    <td width="59%">@p.Name</td>
+                    <td width="6%">
+                        @using (Html.BeginForm("DeleteRoles", "UserRole"))
+                        {
+                            @Html.Hidden("roleid", p.Id)
+                            <button class="btn btn-white btn-sm" type="submit">删除</button>
+                        }
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+    <form action="/UserRole/CreateRoles" method="post">
+        <input type="text" name="rolename" class="text-box">
+        <input type="submit" class="btn btn-default" value="提交">
+    </form>
+</div>
+
+
+
+
+
+

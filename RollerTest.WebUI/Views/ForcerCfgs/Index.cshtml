@@ -1,0 +1,63 @@
+﻿@model IEnumerable<RollerTest.Domain.Entities.ForcerCfg>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ForcerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForcerMark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForcerSwitch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForcerUp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForcerDn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForcerSet)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForcerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForcerMark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForcerSwitch)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForcerUp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForcerDn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForcerSet)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

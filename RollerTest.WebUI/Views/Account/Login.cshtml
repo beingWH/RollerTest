@@ -1,0 +1,73 @@
+﻿@using RollerTest.WebUI.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "登录";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SMEC | Login</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="~/Content/animate.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet">
+</head>
+<body class="gray-bg">
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">HH+</h1>
+            </div>
+            <h3>欢迎登录上海三菱中心实验室</h3>
+            <p>
+                上海三菱中心实验室业务范围覆盖机械、电气、软件领域，秉持公正、公开、精确、及时的原则为公司各项产品保驾护航。
+            </p>
+            <div class="col-md-12">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div>
+                        @Html.AntiForgeryToken()
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control",@placeholder="用户名" })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control",@placeholder="密码"})
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        <div>
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" value="登录" class="btn btn-primary block full-width m-b" />
+                        </div>
+                    </div>
+                }
+            </div>
+        @Html.ActionLink("忘记了密码?", "ForgotPassword")
+        <p class="text-muted text-center"><small>没有账号？</small></p>
+        <a class="btn btn-sm btn-white btn-block" href="@Url.Action("Register", "Account")">注册新用户</a>
+
+            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2015</small> </p>
+        </div>
+        </div>
+</body>
+</html>

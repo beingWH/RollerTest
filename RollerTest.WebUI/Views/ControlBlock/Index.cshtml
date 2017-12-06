@@ -1,0 +1,308 @@
+﻿@model RollerTest.WebUI.Models.ControlBlockViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-10">
+        <h2>控制面板</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="@Url.Action("Index", "Home")">主页</a>
+            </li>
+            <li>
+                <a>控制面板</a>
+            </li>
+            <li class="active">
+                <strong>控制参数</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-2">
+
+    </div>
+</div>
+<div class="row wrapper wrapper-content animated fadeInRight">
+    <div class="col-sm-4">
+        <div class="col-sm-12 ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>写入与计时服务</h5>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <div class="feed-activity-list">
+                        <div class="feed-element">
+                            <div class="media-body ">
+                                <strong id="filestate">写入状态：</strong>
+                                <div class="pull-right">
+                                    <input type="button" class="btn btn-xs btn-white" id="filestatebutton" value="开启" />
+                                    <input type="button" class="btn btn-xs btn-white" id="filestatebutton2" value="关闭" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-element">
+                            <div class="media-body ">
+                                <strong id="timestate">计时状态：</strong>
+                                <div class="pull-right">
+                                    <input type="button" class="btn btn-xs btn-white" id="timestatebutton" value="开启" />
+                                    <input type="button" class="btn btn-xs btn-white" id="timestatebutton2" value="关闭" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>电机控制服务</h5>
+                <span id="cdioconnectstate" class="label label-primary pull-right"></span>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <div class="feed-activity-list">
+                        <div class="feed-element">
+                            <div class="media-body ">
+                                <strong id="runstate">运行状态：</strong>
+                                <div class="pull-right">
+                                    <input type="button" class="btn btn-xs btn-white" id="runstatebutton" value="正转" />
+                                    <input type="button" class="btn btn-xs btn-white" id="runstatebutton2" value="反转" />
+                                    <input type="button" class="btn btn-xs btn-white" id="runstatebutton3" value="停止" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>应力控制服务</h5>
+                <span id="dealstate" class="label label-primary pull-right"></span>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <div class="feed-activity-list">
+                        <div class="feed-element">
+                            <div class="media-body ">
+                                <strong>操作提示</strong>
+                                <small class="text-muted">点击控制应力采集状态</small>
+                                <div class="pull-right">
+                                    <input type="button" class="btn btn-xs btn-white" id="dealstatebutton" value="连接" />
+                                    <input type="button" class="btn btn-xs btn-white" id="dealstatebutton1" value="断开" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>资源数据</h5>
+            </div>
+            <div class="ibox-content">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <td align="center">工位</td>
+                            <td align="center">计时器</td>
+                            <td align="center">后台计时</td>
+                            <td align="center">实时计时</td>
+                            <td align="center">传感器</td>
+                            <td align="center">实时应力</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var p in Model.rollerbasestations)
+                        {
+                            switch (p.Station)
+                            {
+                                case "1#": 
+                         <tr><td width="10%">1#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "2#":
+                        <tr><td width="10%">2#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "3#":
+                        <tr><td width="10%">3#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "4#":
+                        <tr><td width="10%">4#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "5#":
+                        <tr><td width="10%">5#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "6#":
+                        <tr><td width="10%">6#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "7#":
+                        <tr><td width="10%">7#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "8#":
+                        <tr><td width="10%">8#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "9#":
+                        <tr><td width="10%">9#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "10#":
+                        <tr><td width="10%">10#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "11#":
+                        <tr><td width="10%">11#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+                                case "12#":
+                        <tr><td width="10%">12#工位</td><td>@p.TimerCfg.TimerName</td><td width="25%">@Model.tdstr(@p.TimerCfg.TimerName)</td><td width="25%" id="time-@p.TimerCfg.TimerMark"></td><td>@p.ForcerCfg.ForcerName</td><td width="20%" id="data-@p.ForcerCfg.ForcerMark"></td></tr>; break;
+
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+                <div>
+                    <input type="button" class="btn btn-xs btn-white" id="opentimeportbutton" value="开启计时端口" />
+                    <input type="button" class="btn btn-xs btn-white" id="closetimeportbutton" value="关闭计时端口" />
+                    <input type="button" class="btn btn-xs btn-white" id="readtimebutton" value="读取计时端口" />
+                    <input type="button" class="btn btn-xs btn-white" id="openforceportbutton" value="开启应力端口" />
+                    <input type="button" class="btn btn-xs btn-white" id="closeforceportbutton" value="关闭应力端口" />
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(function () {
+                                var time = $.connection.timeHub;
+                                var data = $.connection.dataHub;
+                                time.client.addNewTimeToPage = function (station, time) {
+                                    switch (station) {
+                                        case "AI1-1-01": $("#time-1").html(time); break;
+                                        case "AI1-1-02": $("#time-2").html(time); break;
+                                        case "AI1-1-03": $("#time-3").html(time); break;
+                                        case "AI1-1-04": $("#time-4").html(time); break;
+                                        case "AI1-1-05": $("#time-5").html(time); break;
+                                        case "AI1-1-06": $("#time-6").html(time); break;
+                                        case "AI1-1-07": $("#time-7").html(time); break;
+                                        case "AI1-1-08": $("#time-8").html(time); break;
+                                        case "AI1-1-09": $("#time-9").html(time); break;
+                                        case "AI1-1-10": $("#time-10").html(time); break;
+                                        case "AI1-1-11": $("#time-11").html(time); break;
+                                        case "AI1-1-12": $("#time-12").html(time); break;
+                                    }
+                                }
+            data.client.addNewDataToPage = function (station, data) {
+                switch (station) {
+                    case "AI1-1-01": $("#data-1").html(data+"N"); break;
+                    case "AI1-1-02": $("#data-2").html(data + "N"); break;
+                    case "AI1-1-03": $("#data-3").html(data + "N"); break;
+                    case "AI1-1-04": $("#data-4").html(data + "N"); break;
+                    case "AI1-1-05": $("#data-5").html(data + "N"); break;
+                    case "AI1-1-06": $("#data-6").html(data + "N"); break;
+                    case "AI1-1-07": $("#data-7").html(data + "N"); break;
+                    case "AI1-1-08": $("#data-8").html(data + "N"); break;
+                    case "AI1-1-09": $("#data-9").html(data + "N"); break;
+                    case "AI1-1-10": $("#data-10").html(data + "N"); break;
+                    case "AI1-1-11": $("#data-11").html(data + "N"); break;
+                    case "AI1-1-12": $("#data-12").html(data + "N"); break;
+
+                }
+            }
+            $.connection.hub.start().done();
+
+            $.getJSON("/ControlBlock/StateLoad", null, function (data) {
+                $("#runstate").html("运行状态：" + data.runstate);
+                $("#timestate").html("计时状态：" + data.timestate);
+                $("#filestate").html("写入状态：" + data.filestate);
+                $("#cdiostate").html("监视状态：" + data.cdiostate);
+                $("#cdioconnectstate").html(data.cdioconnectstate);
+                $("#dealstate").html(data.dealstate);
+
+            });
+
+            $("#timestatebutton").click(function () {
+                $.getJSON("/ControlBlock/TimerOpen", null, function (data) {
+                    $("#timestate").html("计时状态："+data);
+                })
+            });
+
+            $("#timestatebutton2").click(function () {
+                $.getJSON("/ControlBlock/TimerClose", null, function (data) {
+                    $("#timestate").html("计时状态：" + data);
+                })
+            });
+            $("#filestatebutton").click(function () {
+                $.getJSON("/ControlBlock/FileOpen", null, function (data) {
+                    $("#filestate").html("写入状态：" + data);
+                })
+            });
+
+            $("#filestatebutton2").click(function () {
+                $.getJSON("/ControlBlock/FileClose", null, function (data) {
+                    $("#filestate").html("写入状态：" + data);
+                })
+            });
+
+            $("#runstatebutton").click(function () {
+                $.getJSON("/ControlBlock/MotoRunning", null, function (data) {
+                    $("#runstate").html("运行状态：" + data);          
+                })
+            });
+            $("#runstatebutton2").click(function () {
+                $.getJSON("/ControlBlock/MotoRunningREV", null, function (data) {
+                    $("#runstate").html("运行状态：" + data);
+                })
+            });
+            $("#runstatebutton3").click(function () {
+                $.getJSON("/ControlBlock/MotoStopping", null, function (data) {
+                    $("#runstate").html("运行状态：" + data);
+                })
+            });
+            $("#dealstatebutton").click(function () {
+                $.getJSON("/ControlBlock/OpenDeal", null, function (data) {
+                    $("#dealstate").html(data);
+                })
+            });
+            $("#dealstatebutton1").click(function () {
+                $.getJSON("/ControlBlock/CloseDeal", null, function (data) {
+                    $("#dealstate").html(data);
+                })
+            });
+            $("#opentimeportbutton").click(function () {
+                $.getJSON("/ControlBlock/OpenTimePort", null, function (data) {
+                    alert(data);
+                })
+            });
+            $("#closetimeportbutton").click(function () {
+                $.getJSON("/ControlBlock/CloseTimePort", null, function (data) {
+                    alert(data);
+                })
+            });
+            $("#openforceportbutton").click(function () {
+                $.getJSON("/ControlBlock/OpenForcePort", null, function (data) {
+                    alert(data);
+                })
+            });
+            $("#closeforceportbutton").click(function () {
+                $.getJSON("/ControlBlock/CloseForcePort", null, function (data) {
+                    alert(data);
+                })
+            });
+            $("#readtimebutton").click(function () {
+                $.getJSON("/ControlBlock/ReadTimeToBuffer", null, function (data) {
+                    alert(data);
+                })
+            });
+
+
+        })
+    </script>
+
+}
+
+
+
+

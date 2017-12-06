@@ -1,0 +1,59 @@
+﻿@model RollerTest.WebUI.Models.SampleTestingRecordViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="hr-line-dashed"></div>
+    <div class="col-lg-10">
+        <label class="col-lg-1 control-label">样品信息</label>
+        <div class="container col-lg-11">
+             <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td align="center">时间</td>
+                                        <td align="center">累积时间</td>
+                                        <td align="center">样品状态</td>
+                                        <td align="center">样品信息</td>
+                                        <td align="center">操作</td>
+                                        <td align="center">操作</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var p in Model.rollerrecordinfos)
+                                    {                                     
+                                        <tr>
+                                            <td width="15%">@p.CurrentTime</td>
+                                            <td width="15%">@p.TotalTime</td>
+                                            <td width="7%">@p.SampleStatus</td>
+                                            <td width="51%">@p.RecordInfo</td>
+                                            <td width="6%">
+                                                @Html.ActionLink("编辑", "EditSampleTestingRecord", new { RollerRecordInfoID=p.RollerRecordInfoID }, new { @class = "btn btn-white btn-sm" })
+                                            </td>
+                                            <td width="6%">
+                                                @using (Html.BeginForm("DeleteSampleTestingRecord", "SampleTestingRecord"))
+                                                {
+                                                    @Html.Hidden("RollerRecordInfoId", p.RollerRecordInfoID)
+                                                    @Html.Hidden("RollerSampleInfoID", Model.SampleId)
+                                                    <button class="btn btn-white btn-sm" type="submit">删除</button>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+             @Html.ActionLink("增加", "CreateSampleTestingRecord", new { Controller = "SampleTestingRecord", RollerSampleInfoID = Model.SampleId})
+             &nbsp;&nbsp;
+             @Html.ActionLink("返回", "Index","TestBlock")
+            </div>
+    </div>
+
+
+
+
+
+
+
+
+
+

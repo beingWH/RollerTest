@@ -1,0 +1,44 @@
+﻿@model RollerTest.WebUI.Models.UserViewModel
+
+@{
+    ViewBag.Title = "UserIndex";
+    int i = 1;
+}
+
+<h2>用户管理</h2>
+<div class="container col-lg-8">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td align="center">序号</td>
+                <td align="center">编号</td>
+                <td align="center">用户名</td>
+                <td align="center">邮箱</td>
+                <td align="center">角色</td>
+                <td align="center">操作</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Users)
+            {
+                <tr>
+                    <td width="5%">@i</td>
+                    <td width="30%">@p.Id</td>
+                    <td width="20%">@p.UserName</td>
+                    <td width="33%">@p.Email</td>
+                    <td width="6%">
+                        @Html.ActionLink("详细", "UserRolesIndex", new { userId = p.Id }, new { @class = "btn btn-white btn-sm" })
+                    </td>
+                    <td width="6%">
+                        @using (Html.BeginForm("DeleteUsers", "UserRole"))
+                        {
+                            @Html.Hidden("userid", p.Id)
+                            <button class="btn btn-white btn-sm" type="submit">删除</button>
+                        }
+                    </td>
+                </tr>
+                i++;
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,66 @@
+﻿@model RollerTest.Domain.Entities.RollerBaseStation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RollerBaseStation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ForcerCfg.ForcerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForcerCfg.ForcerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimerCfg.TimerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimerCfg.TimerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Device)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Device)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Station)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Station)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RollerBaseStationID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

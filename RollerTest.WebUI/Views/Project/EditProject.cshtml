@@ -1,0 +1,71 @@
+﻿@model RollerTest.Domain.Entities.RollerProjectInfo
+
+@{
+    ViewBag.Title = "EditProject";
+}
+
+<div class="container col-lg-10 row">
+   <form method="post" class="form-horizontal" action="~/Project/EditProject">
+                                    @Html.ValidationSummary(true)
+                                    @Html.HiddenFor(x => x.RollerProjectInfoID)                                
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">委托单号</label>
+                                        <div class="col-sm-9">
+                                            @Html.EditorFor(x => x.Commission)
+                                            @Html.ValidationMessageFor(x => x.Commission)
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">试验名称</label>
+
+                                        <div class="col-sm-9">
+                                        @Html.EditorFor(x => x.TestName)
+                                        @Html.ValidationMessageFor(x => x.TestName)
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">试验标准</label>
+
+                                        <div class="col-sm-10">
+                                        @Html.DropDownListFor(x => x.TestStandard, ViewData["StandardList"] as IEnumerable<SelectListItem>, "--------------------------------------请选择-------------------------------------")
+                                            @Html.ValidationMessageFor(x => x.TestStandard)
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">试验地点</label>
+
+                                        <div class="col-sm-10">
+                                        @Html.DropDownListFor(x => x.TestLocation, ViewData["LocationList"] as IEnumerable<SelectListItem>, "--------------------------------------请选择-------------------------------------")
+                                        @Html.ValidationMessageFor(x => x.TestLocation)
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">试验条件</label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownListFor(x => x.TestCondition, ViewData["ConditionList"] as IEnumerable<SelectListItem>, "--------------------------------------请选择-------------------------------------")
+                                            @Html.ValidationMessageFor(x => x.TestCondition)
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">试验装置</label>
+
+                                        <div class="col-sm-10">
+                                        @Html.DropDownListFor(x => x.TestDevice, ViewData["DeviceList"] as IEnumerable<SelectListItem>, "--------------------------------------请选择-------------------------------------")
+                                        @Html.ValidationMessageFor(x => x.TestDevice)
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="col-sm-offset-5">
+                                        <input class="btn btn-primary" type="submit" value="提交" />
+                                        @*@Html.ActionLink("返回", "Index", "Sample")*@
+                                    </div>
+                                </form>
+ </div>
+
+

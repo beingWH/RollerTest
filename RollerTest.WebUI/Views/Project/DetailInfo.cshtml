@@ -1,0 +1,210 @@
+﻿@model RollerTest.WebUI.Models.WTTESTMODEL.WTTESTINFO
+
+@{
+    ViewBag.Title = "DetailInfo";
+}
+
+<h2>详情信息</h2>
+
+<div>
+    <h4>Detail Infos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            试验平台
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PLATFORM)
+        </dd>
+
+        <dt>
+            试验类型
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TYPE)
+        </dd>
+
+        <dt>
+           试验名称
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME)
+        </dd>
+
+        <dt>
+           标准模板
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRD_REQ_NAME)
+        </dd>
+
+        <dt>
+            试验标准
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STANDARD)
+        </dd>
+
+        <dt>
+            标准选项
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STANDARD_OPTION)
+        </dd>
+
+        <dt>
+            特殊要求
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STANDARD_REMARK)
+        </dd>
+
+
+        <dt>
+            试验人员ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TESTER_ID)
+        </dd>
+
+        <dt>
+            校对人员ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CHECKER_ID)
+        </dd>
+
+        <dt>
+            委托单ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMMISSION_ID)
+        </dd>
+
+        <dt>
+            委托单号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SERIAL_NO)
+        </dd>
+
+        <dt>
+            委托人
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATOR_NAME)
+        </dd>
+
+        <dt>
+            委托人部门
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEPT_NAME)
+        </dd>
+
+        <dt>
+            产品名称
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCT_NAME)
+        </dd>
+
+        <dt>
+           产品图号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCT_NO)
+        </dd>
+
+        <dt>
+           群品番号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCT_GL_CODE)
+        </dd>
+
+        <dt>
+           产品型号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCT_TYPE_NO)
+        </dd>
+
+        <dt>
+            产品分类
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCT_CATEGORY)
+        </dd>
+
+        <dt>
+            制造单位
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCT_COMPANY)
+        </dd>
+
+        <dt>
+            单位地址
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPANY_ADDRESS)
+        </dd>
+
+        <dt>
+            试验目的
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEST_PURPOSE)
+        </dd>
+
+        <dt>
+            试验要求
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TEST_REQUIREMENTS)
+        </dd>
+
+        <dt>
+            审批日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APPROVE_TIME)
+        </dd>
+
+        <dt>
+            约定完成日期
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RE_FINISH_DATE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "CreateProject")
+</p>

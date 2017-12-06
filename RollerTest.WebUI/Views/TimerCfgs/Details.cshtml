@@ -1,0 +1,42 @@
+﻿@model RollerTest.Domain.Entities.TimerCfg
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TimerCfg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TimerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimerMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimerMark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimerSwitch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimerSwitch)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

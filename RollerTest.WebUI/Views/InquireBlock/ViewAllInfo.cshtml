@@ -1,0 +1,131 @@
+﻿@model RollerTest.WebUI.Models.ViewAllInfoModel
+
+@{
+    ViewBag.Title = "ViewAllInfo";
+}
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            @{ Html.RenderPartial("SampleMenu", Model.samplelistviewmodel);}
+        </div>
+        <div class="col-lg-9 animated fadeInRight">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>试验信息</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">试验样品记录</label>
+                                    <div class="container col-lg-10">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td align="center">样品编号</td>
+                                                    <td align="center">样品名称</td>
+                                                    <td align="center">试验类型</td>
+                                                    <td align="center">试验时间</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                    <tr>
+                                                        <td>@Model.rollersampleinfo.SampleID</td>
+                                                        <td>@Model.rollersampleinfo.SampleName</td>
+                                                        <td>@Model.rollersampleinfo.TestType</td>
+                                                        <td>@Model.rollersampleinfo.TestTime</td>
+                                                    </tr>
+                                            </tbody>
+                                            <thead>
+                                                <tr>
+                                                    <td align="center">寿命时间</td>
+                                                    <td align="center">上限值</td>
+                                                    <td align="center">下限值</td>
+                                                    <td align="center">设定值</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>@Model.rollersampleinfo.TestTotalTime</td>
+                                                    <td>@Model.rollersampleinfo.UpLimit</td>
+                                                    <td>@Model.rollersampleinfo.DnLimit</td>
+                                                    <td>@Model.rollersampleinfo.SetValue</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">试验判定记录</label>
+                                    <div class="container col-lg-10">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td align="center">开始状态</td>
+                                                    <td align="center">开始状态描述</td>
+                                                    <td align="center">结束状态</td>
+                                                    <td align="center">结束状态描述</td>
+                                                    <td align="center">最终状态</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var p in Model.rollertestreportinfos)
+                                                {
+                                                    <tr>
+                                                        <td width="10%">@p.StartStatus</td>
+                                                        <td width="35%">@p.StartText</td>
+                                                        <td width="10%">@p.EndStatus</td>
+                                                        <td width="35%">@p.EndText</td>
+                                                        <td width="10%">@p.FinalStatus</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label">试验过程记录</label>
+                                    <div class="container col-lg-10">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <td align="center">时间节点</td>
+                                                    <td align="center">试验计时</td>
+                                                    <td align="center">过程记录</td>
+                                                    <td align="center">样品状态</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var p in Model.rollerrecordinfos)
+                                                {
+                                                    <tr>
+                                                        <td width="25%">@p.CurrentTime</td>
+                                                        <td width="25%">@p.TotalTime</td>
+                                                        <td width="40%">@p.RecordInfo</td>
+                                                        <td width="10%">@p.SampleStatus</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,127 @@
+﻿@model RollerTest.Domain.Entities.RollerSampleInfo
+
+@{
+    ViewBag.Title = "DeleteSample";
+}
+
+<h2>删除试验配置</h2>
+
+<div>
+    <h4>确定要删除该试验配置吗？</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            设备管理号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RollerBaseStation.Device)
+        </dd>
+
+        <dt>
+            委托单号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RollerProjectInfo.Commission)
+        </dd>
+
+        <dt>
+           样品编号
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampleID)
+        </dd>
+
+        <dt>
+            样品名称
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SampleName)
+        </dd>
+
+        <dt>
+            试验种类
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestType)
+        </dd>
+
+        <dt>
+            上限值
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpLimit)
+        </dd>
+
+        <dt>
+            下限值
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DnLimit)
+        </dd>
+
+        <dt>
+           设定值
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SetValue)
+        </dd>
+
+        <dt>
+            试验状态
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+           开始时间
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            结束时间
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            设定试验时间
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestTime)
+        </dd>
+
+        <dt>
+            试验总时长
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestTotalTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-default" /> |
+            @Html.ActionLink("返回列表", "ViewInfo",new { RollerProjectInfoID=Model.RollerProjectInfoID })
+        </div>
+    }
+</div>

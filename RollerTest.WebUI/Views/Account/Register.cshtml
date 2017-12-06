@@ -1,0 +1,81 @@
+﻿@model RollerTest.WebUI.Models.RegisterViewModel
+@{
+    ViewBag.Title = "注册";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SMEC | Registry</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="~/Content/animate.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet">
+</head>
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">HH+</h1>
+            </div>
+            <h3>注册成为用户</h3>
+            <div class="col-md-12">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div>
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "用户名" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "姓名" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder="邮箱名" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "输入密码" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "确认密码" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" class="btn btn-primary block full-width m-b" value="注册" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="text-muted text-center"><small>已经拥有账号？</small></p>
+                        <a class="btn btn-sm btn-white btn-block" href="@Url.Action("Login", "Account")">登录</a>
+                    </div>
+                }
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }
+            </div>
+            
+            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2015</small> </p>
+        </div>
+    </div>
+
+</body>
+</html>
+

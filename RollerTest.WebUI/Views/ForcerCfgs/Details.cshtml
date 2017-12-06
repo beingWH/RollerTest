@@ -1,0 +1,66 @@
+﻿@model RollerTest.Domain.Entities.ForcerCfg
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ForcerCfg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ForcerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForcerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForcerMark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForcerMark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForcerSwitch)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForcerSwitch)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForcerUp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForcerUp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForcerDn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForcerDn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForcerSet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForcerSet)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

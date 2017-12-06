@@ -1,0 +1,31 @@
+﻿@model RollerTest.WebUI.Models.SampleListViewModel
+
+<div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>样品列表</h5>
+        </div>
+        <div class="ibox-content ibox-heading">
+            <h5>点击获取你想要的信息</h5>
+        </div>
+        <div class="ibox-content inspinia-timeline">
+            @foreach (var p in Model.rollersampleinfos)
+            {
+                <div class="timeline-item">
+                    <div class="row">
+                        <div class="col-xs-3 date">
+                            <i class="fa fa-briefcase"></i>
+                            
+                            <small class="text-navy">@p.State</small>
+                        </div>
+                        <div class="col-xs-7 content no-top-border">
+                            <p class="m-b-xs"><strong>@Html.ActionLink(@p.SampleID, "ViewAllInfo", new { Controller = "InquireBlock", sampleId = @p.RollerSampleInfoID})</strong></p>
+                            <small class="text-navy">START:@p.StartTime</small>
+                            <small class="text-navy">END:@p.EndTime</small>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
